@@ -13,8 +13,7 @@ ConteudoMapa = "[$NomeMapa]
 authorization0=$CnpjCliente;$StoneCode;RET.EXT.$StoneCode.390.$IdCaixaPostal"
 Arquivo = $NomeMapa.ini
 
-cd /home/skyline/operacoes/DEMO.SILVANO/ReprocessamentosStone
-$ConteudoMapa > $Arquivo
+$ConteudoMapa > /home/skyline/operacoes/DEMO.SILVANO/ReprocessamentosStone/$Arquivo
 
 
 
