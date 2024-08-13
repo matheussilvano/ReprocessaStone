@@ -14,7 +14,6 @@ authorization0=$CnpjCliente;$StoneCode;RET.EXT.$StoneCode.390.$IdCaixaPostal"
 Arquivo = $NomeMapa.ini
 
 cd /home/skyline/operacoes/DEMO.SILVANO/ReprocessamentosStone
-touch $Arquivo
 $ConteudoMapa > $Arquivo
 
 
