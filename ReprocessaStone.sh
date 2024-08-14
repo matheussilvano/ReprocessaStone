@@ -19,18 +19,20 @@ read -p "Insira o número de dias retroativos: " DiasRetroativos
 
 # Variaveis
 ConteudoMapa = "[$NomeMapa]
-authorization0=$CnpjCliente;$StoneCode;RET.EXT.$StoneCode.390.$IdCaixaPostal"
-Arquivo = $NomeMapa.ini
-Demo = home/skyline/operacoes/DEMO.SILVANO/ReprocessamentosStone
+authorization0=$CnpjCliente;$StoneCode;RET.EXT.$StoneCode.390.$IdCaixaPostal"  # Conteudo a ser inserido dentro do mapa para parametrizacao com a stone
+Arquivo = $NomeMapa.ini  # Arquivo do mapa
+Demo = home/skyline/operacoes/DEMO.SILVANO/ReprocessamentosStone  # Demo na operacoes
 
-touch $Demo/$Arquivo
-$ConteudoMapa >> $Demo/$Arquivo
+# Criacao do Mapa
+touch $Demo/$Arquivo # Cria um arquivo de mapa
+$ConteudoMapa >> $Demo/$Arquivo  #Adiciona o conteudo no mapa
 
+# Solicita os arquivos
 /home/skyline/scripts/stone/StoneGetFiles.sh.run $Demo/$Arquivo -r $DiasRetroativos
 
-cd /home/skyline/scripts/stone/python/reprocessamento
-
-for i in *RET.EXT.$StoneCode.390.$IdCaixaPostal* ; do mv -v $i /var/spool/nexxera/skyline/recebe/ident/$(basename $i | cut -f1 -d\$) ; sleep 1 ; done
+# Move pra var/spool
+cd /home/skyline/scripts/stone/python/reprocessamento  # Abre a pasta de reprocessamento da stone
+for i in *RET.EXT.$StoneCode.390.$IdCaixaPostal* ; do mv -v $i /var/spool/nexxera/skyline/recebe/ident/$(basename $i | cut -f1 -d\$) ; sleep 1 ; done  # Manda para a var/spool
 
 
 
