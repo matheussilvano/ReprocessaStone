@@ -38,6 +38,8 @@ echo "$ConteudoMapa" >> "$Demo/$Arquivo"  # Adiciona o conteúdo no mapa
 cd /home/skyline/scripts/stone/python/reprocessamento  # Abre a pasta de reprocessamento da stone
 for i in *RET.EXT.$StoneCode.390.$IdCaixaPostal* ; do mv -v $i /var/spool/nexxera/skyline/recebe/ident/$(basename $i | cut -f1 -d\$) ; sleep 1 ; done  # Manda para a var/spool
 
+rm "$Demo/$Arquivo" # Remove o arquivo da Demo
+
 echo "Processo finalizado! $DiasRetroativos dias gerados para o Stone Code $StoneCode."
 
 
