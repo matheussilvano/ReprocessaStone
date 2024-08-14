@@ -23,6 +23,9 @@ authorization0=$CnpjCliente;$StoneCode;RET.EXT.$StoneCode.390.$IdCaixaPostal"  #
 Arquivo="$NomeMapa.ini"  # Nome do arquivo do mapa
 Demo="/home/skyline/operacoes/DEMO.SILVANO/ReprocessamentosStone"  # Caminho para a pasta Demo na operações
 
+echo "Mapa $Arquivo criado!" # Retorna com o Mapa que foi criado
+sleep 1
+
 # Criação do Mapa
 touch "$Demo/$Arquivo"  # Cria um arquivo de mapa
 echo "$ConteudoMapa" >> "$Demo/$Arquivo"  # Adiciona o conteúdo no mapa
@@ -30,9 +33,12 @@ echo "$ConteudoMapa" >> "$Demo/$Arquivo"  # Adiciona o conteúdo no mapa
 # Solicita os arquivos
 /home/skyline/scripts/stone/StoneGetFiles.sh.run "$Demo/$Arquivo" -r "$DiasRetroativos"
 
+
 # Move pra var/spool
 cd /home/skyline/scripts/stone/python/reprocessamento  # Abre a pasta de reprocessamento da stone
 for i in *RET.EXT.$StoneCode.390.$IdCaixaPostal* ; do mv -v $i /var/spool/nexxera/skyline/recebe/ident/$(basename $i | cut -f1 -d\$) ; sleep 1 ; done  # Manda para a var/spool
+
+echo "Processo finalizado! $DiasRetroativos dias gerados para o Stone Code $StoneCode."
 
 
 
