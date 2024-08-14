@@ -1,5 +1,15 @@
 #! /bin/bash
 
+#############################################
+##                                         ##
+## ReprocessaStone.sh                      ##
+##                                         ##
+## Criado por: Matheus Silvano Pereira     ##
+##                                         ##
+## Data: 13/08/2024                        ## 
+##                                         ## 
+#############################################
+
 # Inserir dados do cliente
 read -p "Insira um nome para o mapa (Ex: SUPERMERCADO_IDEAL): " NomeMapa
 read -p "Insira o CNPJ do cliente sem pontos e traços: " CnpjCliente
