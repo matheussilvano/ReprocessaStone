@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 #############################################
 ##                                         ##
@@ -17,18 +17,18 @@ read -p "Insira o Stone Code do cliente: " StoneCode
 read -p "Insira o id da Caixa Postal do cliente: " IdCaixaPostal
 read -p "Insira o número de dias retroativos: " DiasRetroativos
 
-# Variaveis
-ConteudoMapa = "[$NomeMapa]
-authorization0=$CnpjCliente;$StoneCode;RET.EXT.$StoneCode.390.$IdCaixaPostal"  # Conteudo a ser inserido dentro do mapa para parametrizacao com a stone
-Arquivo = $NomeMapa.ini  # Arquivo do mapa
-Demo = home/skyline/operacoes/DEMO.SILVANO/ReprocessamentosStone  # Demo na operacoes
+# Variáveis
+ConteudoMapa="[$NomeMapa]
+authorization0=$CnpjCliente;$StoneCode;RET.EXT.$StoneCode.390.$IdCaixaPostal"  # Conteúdo a ser inserido dentro do mapa para parametrização com a Stone
+Arquivo="$NomeMapa.ini"  # Nome do arquivo do mapa
+Demo="/home/skyline/operacoes/DEMO.SILVANO/ReprocessamentosStone"  # Caminho para a pasta Demo na operações
 
-# Criacao do Mapa
-touch $Demo/$Arquivo # Cria um arquivo de mapa
-$ConteudoMapa >> $Demo/$Arquivo  #Adiciona o conteudo no mapa
+# Criação do Mapa
+touch "$Demo/$Arquivo"  # Cria um arquivo de mapa
+echo "$ConteudoMapa" >> "$Demo/$Arquivo"  # Adiciona o conteúdo no mapa
 
 # Solicita os arquivos
-/home/skyline/scripts/stone/StoneGetFiles.sh.run $Demo/$Arquivo -r $DiasRetroativos
+/home/skyline/scripts/stone/StoneGetFiles.sh.run "$Demo/$Arquivo" -r "$DiasRetroativos"
 
 # Move pra var/spool
 cd /home/skyline/scripts/stone/python/reprocessamento  # Abre a pasta de reprocessamento da stone
